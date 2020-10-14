@@ -4,8 +4,11 @@ import os
 import requests
 import xml.sax
 import xml.etree.ElementTree as ET
+from datetime import date
+
 
 root = tk.Tk()
+
 root.title("Global currency to ILS")
 root.geometry("450x300")
 root.configure(background="#263D42")
@@ -14,7 +17,11 @@ USD = StringVar()
 EUR = StringVar()
 label = Label(root, textvariable=USD, width=20)
 label2 = Label(root, textvariable=EUR, width=20)
-currecny_endpoint = "https://www.boi.org.il/currency.xml?rdate=20201013"
+
+today = date.today()
+d1 = today.strftime("%Y%m%d")
+print(d1)
+currecny_endpoint = "https://www.boi.org.il/currency.xml?rdate="+d1
 
 
 def refreshCurrency():
